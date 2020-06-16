@@ -66,24 +66,26 @@ if [[ ${#token} -ne 32 ]]; then print_error "Invalid token length"; fi
 if [[ $priority != "highest" && $priority != "high" && $priority != "normal" && $priority != "low" && $priority != "lowest" ]]; then print_error "Invalid priority value: $priority"; fi
 if [[ $level != "verbose" && $level != "info" && $level != "notice" && $level != "warning" && $level != "error" && $level != "success" ]]; then print_error "Invalid level value: $level"; fi
 
-cmd="curl -XPOST"
+cmd="curl -X POST"
 
 if [[ ! -z ${title+x} ]]; then
-	cmd+=" -d title=$title";
+	cmd+="$(printf ' -F title=%q' "$title")"
 fi
 
-cmd+=" -d text=$text"
-cmd+=" -d priority=$priority"
-cmd+=" -d level=$level"
+cmd+="$(printf ' -F text=%q' "$text")"
+cmd+="$(printf ' -F priority=%q' "$priority")"
+cmd+="$(printf ' -F level=%q' "$level")"
 
 for file in "${files[@]}"; do
-	cmd+=" -F 'files[]=@$file'";
+	cmd+="$(printf ' -F files[]=@%q' "$file")"
 done
 
 for image in "${images[@]}"; do
-	cmd+=" -F 'images[]=@$image'";
+	cmd+="$(printf ' -F images[]=@%q' "$image")"
 done
 
 cmd+=" https://notify.events/api/v1/channel/source/$token/execute"
 
-echo $cmd
+bash -c "$cmd"
+
+exit $?

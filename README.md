@@ -1,4 +1,4 @@
-# Bash client for Notify.Events
+# Bash script for Notify.Events
 
 A simple bash script that simplifies the process of integrating your project with the [Notify.Events](https://notify.events) service to send messages to your channels.
 
@@ -10,12 +10,18 @@ A simple bash script that simplifies the process of integrating your project wit
 
 To send a message using a bash script, you need to:
 - Add the [Bash source](https://notify.events/ru/source/67) to your Notify.Events channel and get your `token` 
-- Place the script file into environment which have Internet connection
+- Place the [notify.events.sh](/notify.events.sh) script file into environment which have Internet connection
 - Run the script passing the necessary parameters
 
 Usage example:
 ```
-./notify.events.sh --token=XXXXXXXXXXXX --text="Hello world"
+./notify.events.sh \
+    --token=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX \
+    --text="Hello world" \
+    --priority=high \
+    --image=/var/log/hourly.jpg \
+    --image=/var/log/weekly.jpg \
+    --file=/var/log/summary.log
 ```
 
 # List of available parameters

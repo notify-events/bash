@@ -1,4 +1,4 @@
-# Bash клиент для Notify.Events
+# Bash скрипт для Notify.Events
 
 Простой bash-скрипт, призванный упростить интеграцию вашего проекта с сервисом [Notify.Events](https://notify.events) для отправки уведомлений в ваш канал.
 
@@ -10,12 +10,18 @@
 
 Для отправки сообщения с помощью bash-скрипта, вам необходимо:
 - Добавить источник [Bash](https://notify.events/ru/source/67) на ваш канал в Notify.Events и получить `токен` 
-- Разместить файл скрипта в окружении, имеющем доступ в интернет
+- Разместить файл скрипта [notify.events.sh](/notify.events.sh) в окружении, имеющем доступ в интернет
 - Запустить скрипт, передав ему необходимые параметры
 
 Пример использования:
 ```
-./notify.events.sh --token=XXXXXXXXXXXX --text="Hello world"
+./notify.events.sh \
+    --token=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX \
+    --text="Hello world" \
+    --priority=high \
+    --image=/var/log/hourly.jpg \
+    --image=/var/log/weekly.jpg \
+    --file=/var/log/summary.log
 ```
 
 # Список доступных параметров
