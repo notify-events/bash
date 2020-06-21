@@ -17,7 +17,7 @@ Usage example:
 ```
 ./notify.events.sh \
     --token=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX \
-    --text="Hello world" \
+    --text="Hello <b>world</b>" \
     --priority=high \
     --image=/var/log/hourly.jpg \
     --image=/var/log/weekly.jpg \
@@ -29,16 +29,12 @@ Usage example:
 | Parameter  | Required | Description                                 |
 |------------|----------|---------------------------------------------|
 | --token    | true     | param to specify your Notify.Events `token` |
-| --text     | true     | param to specify message text               |
+| --text     | true     | param to specify message text (allowed html tags: `<b>`, `<i>`, `<a>`, `<br>`) |
 | --title    | false    | message title                               |
-| --priority | false    | message priority (default: normal)          |
-| --level    | false    | message level (default: info)               |
+| --priority | false    | message priority (available values: `highest`, `high`, `normal`, `low`, `lowest`. Default: `normal`) |
+| --level    | false    | message level (available values: `verbose`, `info`, `notice`, `warning`, `error`, `success`. Default: `info`) |
 | --file     | false    | attach local file                           |
 | --image    | false    | attach local image                          |
-
-Available values for the `--priority` parameter: `highest`, `high`, `normal`, `low`, `lowest`.
-
-Available values for the `--level` parameter: `verbose`, `info`, `notice`, `warning`, `error`, `success`.
 
 You can use the `--file` and `--image` parameters several times in one call to attach multiple files to your message.
 
