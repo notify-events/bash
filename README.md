@@ -9,7 +9,7 @@ A simple bash script that simplifies the process of integrating your project wit
 # Using instructions
 
 To send a message using a bash script, you need to:
-- Add the [Bash source](https://notify.events/ru/source/67) to your Notify.Events channel and get your `token` 
+- Add the [Bash source](https://notify.events/source/67) to your Notify.Events channel and get your `token` 
 - Place the [notify.events.sh](/notify.events.sh) script file into environment which have Internet connection
 - Run the script passing the necessary parameters
 
